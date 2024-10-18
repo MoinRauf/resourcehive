@@ -403,7 +403,7 @@
 									"font": "Arial;13;1",
 									"left": 152,
 									"top": 669,
-									"width": 299.4580078125,
+									"width": 303.787109375,
 									"height": 13,
 									"text": "hospitals"
 								},
@@ -429,7 +429,7 @@
 											"font": "Arial;13;0",
 											"left": 157,
 											"top": 692,
-											"width": 289.4580078125,
+											"width": 293.787109375,
 											"height": 13
 										},
 										{
@@ -444,7 +444,7 @@
 											"font": "Arial;13;0",
 											"left": 157,
 											"top": 707,
-											"width": 289.4580078125,
+											"width": 293.787109375,
 											"height": 13
 										},
 										{
@@ -459,7 +459,7 @@
 											"font": "Arial;13;0",
 											"left": 157,
 											"top": 722,
-											"width": 289.4580078125,
+											"width": 293.787109375,
 											"height": 13
 										},
 										{
@@ -474,7 +474,7 @@
 											"font": "Arial;13;0",
 											"left": 157,
 											"top": 737,
-											"width": 289.4580078125,
+											"width": 293.787109375,
 											"height": 13
 										},
 										{
@@ -489,21 +489,21 @@
 											"font": "Arial;13;0",
 											"left": 157,
 											"top": 752,
-											"width": 289.4580078125,
+											"width": 293.787109375,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 152,
 									"top": 687,
-									"width": 299.4580078125,
+									"width": 303.787109375,
 									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 152,
 							"top": 664,
-							"width": 299.4580078125,
+							"width": 303.787109375,
 							"height": 106,
 							"nameLabel": {
 								"$ref": "AAAAAAGSnewhGyh22UU="
@@ -953,7 +953,7 @@
 										"$ref": "AAAAAAGSngRwIymYoiE="
 									},
 									"font": "Arial;13;0",
-									"left": 475,
+									"left": 480,
 									"top": 696,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -988,7 +988,7 @@
 								"$ref": "AAAAAAGSnewhGih1J/k="
 							},
 							"lineStyle": 2,
-							"points": "450:717;600:717;600:478",
+							"points": "455:717;600:717;600:478",
 							"nameLabel": {
 								"$ref": "AAAAAAGSngRwIymZYD4="
 							},
@@ -1260,6 +1260,136 @@
 							"headNameLabel": {
 								"$ref": "AAAAAAGSnh22ayp+Q40="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGSnkpSjyvZ6bw=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"left": 8,
+							"top": 544,
+							"width": 137,
+							"height": 97,
+							"text": "1:FEW\nUser:Hospitals \nChild Referencing\n\nNested Route:\nusers/hospitals \n"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGSnkpSmyvckqU=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGSnkpSjyvZ6bw="
+							},
+							"tail": {
+								"$ref": "AAAAAAGSnh22ayp785M="
+							},
+							"lineStyle": 1,
+							"points": "280:591;145:592"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGSnlaCViwQpOs=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"fillColor": "#dddddd",
+							"font": "Arial;13;0",
+							"left": 48,
+							"top": 912,
+							"width": 273,
+							"height": 73,
+							"text": "Entity: hospitalApprovals\n\nSpecial routes for main admin registration and hospital approvals."
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGSnluD8ywtt8s=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"left": 696,
+							"top": 600,
+							"width": 170.240234375,
+							"height": 75,
+							"text": "1:MANY\n\nParent Referencing\nEquipments refers to parent hospital "
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGSnluD/iwwXPc=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGSnluD8ywtt8s="
+							},
+							"tail": {
+								"$ref": "AAAAAAGSngRwIymYoiE="
+							},
+							"lineStyle": 1,
+							"points": "600:597;695:618"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGSnlx00iw4dz4=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"left": 760,
+							"top": 112,
+							"width": 137,
+							"height": 55,
+							"text": "1:MANY\n\nParent Referencing"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGSnlx03iw7OGY=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGSnlx00iw4dz4="
+							},
+							"tail": {
+								"$ref": "AAAAAAGSnf80milG6iA="
+							},
+							"lineStyle": 1,
+							"points": "828:212;828:167"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGSnlzxoixEIjc=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"left": 808,
+							"top": 464,
+							"width": 145,
+							"height": 55,
+							"text": "1:MANY\n\nParent Referencing"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGSnlzxsCxHb1M=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGSnlzxoixEIjc="
+							},
+							"tail": {
+								"$ref": "AAAAAAGSnf62WykxYYA="
+							},
+							"lineStyle": 1,
+							"points": "878:416;879:463"
 						}
 					]
 				},
@@ -1370,7 +1500,7 @@
 								"reference": {
 									"$ref": "AAAAAAGSneY5WihYMvs="
 								},
-								"cardinality": "0..*"
+								"cardinality": "0..0"
 							},
 							"end2": {
 								"_type": "ERDRelationshipEnd",
@@ -1778,7 +1908,8 @@
 							},
 							"name": "userId",
 							"type": "array",
-							"length": 0
+							"length": 0,
+							"nullable": true
 						}
 					]
 				},
@@ -1950,6 +2081,14 @@
 						"$ref": "AAAAAAGSneYwiyhT6xg="
 					},
 					"name": "equipmentHealth"
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAGSnk1Z3ivmipA=",
+					"_parent": {
+						"$ref": "AAAAAAGSneYwiyhT6xg="
+					},
+					"name": "hospitalsApprovals"
 				}
 			]
 		}

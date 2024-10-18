@@ -35,10 +35,10 @@ app.set("views", path.join(__dirname, "views"));
 
 // 1) GLOBAL MIDDLEWARES
 
-app.use(cors());
+// CORS configuration for production and local development
 app.use(
   cors({
-    origin: "https://myschool-mern-app-backend.vercel.app",
+    origin: ["https://resourcehive-b.vercel.app", "http://localhost:5173"],
     credentials: true,
   })
 );
@@ -93,19 +93,20 @@ app.use(
   })
 );
 
+// Compression middleware to optimize response size
 app.use(compression());
 
 // Routes
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/hospitals", hospitalRouter);
-app.use("/api/v1/hospitals", hospitalRouter);
 app.use("/api/v1/equipments", equipmentRouter);
 
-// Error Handling
+// Error Handling for unknown routes
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
+// Global Error Handler
 app.use(globalErrorHandler);
 
 export default app;

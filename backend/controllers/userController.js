@@ -173,4 +173,3 @@ export const getUser = factory.getOne(User);
 //     },
 //   });
 // });
-

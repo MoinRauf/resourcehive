@@ -21,20 +21,9 @@ export const getOne = (Model, popOptions) =>
 
 export const getAll = (Model) =>
   catchAsync(async (req, res, next) => {
-    // await Student.create({
-    //   userId: "670a2309203523123d5196a5", // Existing user ID
-    //   enrollmentNumber: "EN123423345", // Unique enrollment number
-    //   dateOfBirth: new Date("2000-01-01"), // Example date of birth
-    //   firstName: "Moin", // First name
-    //   lastName: "Ali", // Last name
-    //   email: "sahilkrishna4@gmail.com", // Email
-    //   address: "123 Main St, City, Country", // Example address
-    //   // schoolId: "66f43a585666b2b1d9577da5",
-    // });
-
     // To allow for nested GET reviews on tour (hack)
-    let filter = { approvalStatus: "approved" };
-    if (req.params.tourId) filter = { tour: req.params.tourId };
+    // let filter = { approvalStatus: "approved" };
+    // if (req.params.tourId) filter = { tour: req.params.tourId };
 
     // const features = new APIFeatures(Model.find(filter), req.query)
     //   .filter()
@@ -44,7 +33,8 @@ export const getAll = (Model) =>
     // // const doc = await features.query.explain();
     // const doc = await features.query;
 
-    const doc = await Model.find(filter);
+    // const doc = await Model.find(filter);
+    const doc = await Model.find();
 
     // SEND RESPONSE
     res.status(200).json({
@@ -58,7 +48,10 @@ export const getAll = (Model) =>
 
 export const createOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.create(req.body);
+    const newData = req.params.hospitalId
+      ? { ...req.body, hospitalId: req.params.hospitalId }
+      : req.body;
+    const doc = await Model.create(newData);
     res.status(201).json({
       status: "success",
       data: {
@@ -79,6 +72,7 @@ export const deleteOne = (Model) =>
       data: null,
     });
   });
+
 export const updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {

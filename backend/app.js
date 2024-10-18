@@ -4,8 +4,9 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-
 import userRouter from "./routes/userRoutes.js";
+import hospitalRouter from "./routes/hospitalRoutes.js";
+import equipmentRouter from "./routes/equipmentRoutes.js";
 
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
@@ -90,8 +91,10 @@ app.use(
 app.use(compression());
 
 // Routes
-// app.use("/api/v1/users", userRouter);
-// app.use("/api/v1/schools", schoolRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/hospitals", hospitalRouter);
+app.use("/api/v1/hospitals", hospitalRouter);
+app.use("/api/v1/equipments", equipmentRouter);
 
 // Error Handling
 app.all("*", (req, res, next) => {

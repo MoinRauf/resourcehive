@@ -25,29 +25,35 @@ import hpp from "hpp";
 const app = express();
 
 // Serving Static files
-const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
-const __dirname = path.dirname(__filename); // get the name of the directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static(`${__dirname}/public`));
 
 // Setting Templating Engine
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+// Load environment variables
+dotenv.config({ path: "./config.env" });
+
 // 1) GLOBAL MIDDLEWARES
 
 // CORS configuration for production and local development
 app.use(
   cors({
+    origin: ["https://resourcehive-b.vercel.app", "http://localhost:5173"], // Allowed origins
+    credentials: true, // Allow cookies and credentials to be included
+  })
+);
+
+// Preflight OPTIONS request handling
+app.options(
+  "*",
+  cors({
     origin: ["https://resourcehive-b.vercel.app", "http://localhost:5173"],
     credentials: true,
   })
 );
-// Access-Control-Allow-Origin *
-// api.natours.com, front-end natours.com
-// app.use(cors({
-//   origin: 'https://www.natours.com'
-// }))
-// Access-Control-Allow-Headers: Authorization, Content-Type
 
 // Set Security HTTP Headers
 app.use(helmet());
@@ -55,13 +61,10 @@ app.use(helmet());
 // Limit requests from same API
 const limiter = rateLimit({
   max: 100,
-  windowMs: 60 * 60 * 1000,
+  windowMs: 60 * 60 * 1000, // 100 requests per hour
   message: "Too many requests from this IP, please try again in an hour!",
 });
 app.use("/api", limiter);
-
-// Load environment variables
-dotenv.config({ path: "./config.env" });
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: "10kb" }));

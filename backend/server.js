@@ -1,11 +1,32 @@
-import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import app from "./app.js";
 
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("hello");
+process.on("uncaughtException", (err) => {
+  console.log("UnCAUGHT EXCEPTION! 💥 Shutting Down...");
+  console.log(err.name, err.message);
+  process.exit(1);
 });
 
-app.listen(6000, (req, res) => {
-  console.log("Server is running");
+// Env variables
+dotenv.config({ path: "./config.env" });
+
+// Database Config
+const DB = process.env.DATABASE_STRING;
+
+mongoose.connect(DB, {}).then(() => console.log("DB Connection Successful!!!"));
+
+// App Listening
+const port = process.env.PORT || 5000;
+
+const server = app.listen(port, () => {
+  console.log(`App is running on port ${port}`);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.log("Unhandled Rejection! 💥 Shutting down...");
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });

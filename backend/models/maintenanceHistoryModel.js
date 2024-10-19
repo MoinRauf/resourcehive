@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const maintenanceHistorySchema = new mongoose.Schema({
-  maintenanceId: { type: String, required: true, unique: true },
+const maintenanceHistorySchema = new Schema({
+  maintenanceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    default: () => new mongoose.Types.ObjectId(),
+  },
   equipmentId: {
     type: Schema.Types.ObjectId,
     ref: "Equipment",
@@ -13,7 +16,10 @@ const maintenanceHistorySchema = new mongoose.Schema({
     enum: ["Urgent", "Scheduled"],
     required: true,
   },
-  timestamp: { type: Date, default: Date.now },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const MaintenanceHistory = mongoose.model(

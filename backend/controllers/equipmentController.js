@@ -8,8 +8,9 @@ import AppError from "../utils/appError.js";
 
 export const createEquipment = factory.createOne(Equipment);
 
+export const getOneEquipment = factory.getOne(Equipment);
 export const getAllEquipments = factory.getAll(Equipment);
-
+export const deleteEquipment = factory.deleteOne(Equipment);
 export const updateEquipment = catchAsync(async (req, res, next) => {
   const { hospitalId, equipmentId } = req.params;
 

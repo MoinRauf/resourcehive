@@ -103,6 +103,9 @@ app.use(compression());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/hospitals", hospitalRouter);
 app.use("/api/v1/equipments", equipmentRouter);
+app.use("/", (req, res) => {
+  res.send("hello");
+});
 
 // Error Handling for unknown routes
 app.all("*", (req, res, next) => {

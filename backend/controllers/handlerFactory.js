@@ -2,7 +2,21 @@ import AppError from "../utils/appError.js";
 import { catchAsync } from "../utils/catchAsync.js";
 export const getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    let query = Model.findById(req.params.id);
+    // Fetch parameters from request
+    const { hospitalId, equipmentId, id } = req.params;
+
+    let query;
+
+    // Build query based on available parameters
+    if (hospitalId && equipmentId) {
+      // Query by both hospitalId and equipmentId
+      query = Model.findOne({ hospitalId, equipmentId });
+    } else if (id) {
+      // If an ID is provided, query by ID
+      query = Model.findById(id);
+    } else {
+      return next(new AppError("No valid ID or parameters provided", 400));
+    }
 
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
@@ -34,7 +48,19 @@ export const getAll = (Model) =>
     // const doc = await features.query;
 
     // const doc = await Model.find(filter);
-    const doc = await Model.find();
+
+    const { hospitalId } = req.params;
+
+    if (!hospitalId) {
+      return next(new AppError("Hospital ID is required", 400));
+    }
+
+    const doc = await Model.find({ hospitalId });
+
+    // If no documents found, handle error
+    if (!doc || doc.length === 0) {
+      return next(new AppError("No document found with that ID", 404));
+    }
 
     // SEND RESPONSE
     res.status(200).json({
@@ -61,7 +87,19 @@ export const createOne = (Model) =>
   });
 export const deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndDelete(req.params.id);
+    const { hospitalId, equipmentId, id } = req.params;
+
+    let query;
+
+    if (hospitalId && equipmentId) {
+      query = { hospitalId, equipmentId };
+    } else if (id) {
+      query = { _id: id };
+    } else {
+      return next(new AppError("No valid ID or parameters provided", 400));
+    }
+
+    const doc = await Model.findOneAndDelete(query);
 
     if (!doc) {
       return next(new AppError("No document found with that ID", 404));

@@ -4,10 +4,13 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// Routers
 import userRouter from "./routes/userRoutes.js";
 import hospitalRouter from "./routes/hospitalRoutes.js";
 import equipmentRouter from "./routes/equipmentRoutes.js";
+import maintenanceRouter from "./routes/maintenanceHistoryRoutes.js";
 
+// Error Handling Imports
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controllers/errorController.js";
 
@@ -103,11 +106,9 @@ app.use(compression());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/hospitals", hospitalRouter);
 app.use("/api/v1/equipments", equipmentRouter);
-app.use("/", (req, res) => {
-  res.send("hello");
-});
-
-// Error Handling for unknown routes
+app.use("/api/v1/:hospitalId/:equipmentId/maintenance", maintenanceRouter);
+// api/v1/:hospitalId/:equipmentId/maintenance
+// Error Handling
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });

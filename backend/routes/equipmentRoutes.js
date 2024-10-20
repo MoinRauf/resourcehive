@@ -7,11 +7,15 @@ import * as equipmentController from "../controllers/equipmentController.js";
 const router = express.Router();
 router.use(authController.protect);
 router
-  .route("/:hospitalId/")
+  .route("/:hospitalId")
   .get(equipmentController.getAllEquipments)
   .post(equipmentController.createEquipment);
 
-router.patch("/:hospitalId/:equipmentId", equipmentController.updateEquipment);
+router
+  .route("/:hospitalId/:equipmentId")
+  .patch(equipmentController.updateEquipment)
+  .get(equipmentController.getOneEquipment)
+  .delete(equipmentController.deleteEquipment);
 
 export default router;
 

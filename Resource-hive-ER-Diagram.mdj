@@ -348,28 +348,13 @@
 											"top": 446,
 											"width": 188.33984375,
 											"height": 13
-										},
-										{
-											"_type": "ERDColumnView",
-											"_id": "AAAAAAGSniej4isQ7PU=",
-											"_parent": {
-												"$ref": "AAAAAAGSnetOuyhqPnA="
-											},
-											"model": {
-												"$ref": "AAAAAAGSniej2ysNxw8="
-											},
-											"font": "Arial;13;0",
-											"left": 517,
-											"top": 461,
-											"width": 188.33984375,
-											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 512,
 									"top": 351,
 									"width": 198.33984375,
-									"height": 128
+									"height": 113
 								}
 							],
 							"font": "Arial;13;0",
@@ -1390,6 +1375,242 @@
 							},
 							"lineStyle": 1,
 							"points": "878:416;879:463"
+						},
+						{
+							"_type": "ERDEntityView",
+							"_id": "AAAAAAGSzK3mRzWoQcw=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"model": {
+								"$ref": "AAAAAAGSzK3mRzWmnOo="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAGSzK3mRzWprCs=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK3mRzWoQcw="
+									},
+									"font": "Arial;13;1",
+									"left": 1632,
+									"top": 13,
+									"width": 55.8681640625,
+									"height": 13,
+									"text": "IoT API"
+								},
+								{
+									"_type": "ERDColumnCompartmentView",
+									"_id": "AAAAAAGSzK3mRzWqBOI=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK3mRzWoQcw="
+									},
+									"model": {
+										"$ref": "AAAAAAGSzK3mRzWmnOo="
+									},
+									"font": "Arial;13;0",
+									"left": 1632,
+									"top": 31,
+									"width": 55.8681640625,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"left": 1632,
+							"top": 8,
+							"width": 55.8681640625,
+							"height": 33,
+							"nameLabel": {
+								"$ref": "AAAAAAGSzK3mRzWprCs="
+							},
+							"columnCompartment": {
+								"$ref": "AAAAAAGSzK3mRzWqBOI="
+							}
+						},
+						{
+							"_type": "ERDEntityView",
+							"_id": "AAAAAAGSzK6LNzW2e9A=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"model": {
+								"$ref": "AAAAAAGSzK6LNjW0RIM="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAGSzK6LNzW396M=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK6LNzW2e9A="
+									},
+									"font": "Arial;13;1",
+									"left": 1632,
+									"top": 277,
+									"width": 67.80810546875,
+									"height": 13,
+									"text": "Database"
+								},
+								{
+									"_type": "ERDColumnCompartmentView",
+									"_id": "AAAAAAGSzK6LNzW4OKM=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK6LNzW2e9A="
+									},
+									"model": {
+										"$ref": "AAAAAAGSzK6LNjW0RIM="
+									},
+									"font": "Arial;13;0",
+									"left": 1632,
+									"top": 295,
+									"width": 67.80810546875,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"left": 1632,
+							"top": 272,
+							"width": 67.80810546875,
+							"height": 33,
+							"nameLabel": {
+								"$ref": "AAAAAAGSzK6LNzW396M="
+							},
+							"columnCompartment": {
+								"$ref": "AAAAAAGSzK6LNzW4OKM="
+							}
+						},
+						{
+							"_type": "ERDRelationshipView",
+							"_id": "AAAAAAGSzK6w0zXG7Qw=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"model": {
+								"$ref": "AAAAAAGSzK6w0zXCias="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGSzK6w0zXHdlQ=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 1673,
+									"top": 149,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGSzK6w1DXIw7Y=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"font": "Arial;13;0",
+									"left": 1673,
+									"top": 59,
+									"height": 13,
+									"alpha": 0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGSzK6w1DXJnug=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"font": "Arial;13;0",
+									"left": 1594,
+									"top": 240,
+									"width": 159.70068359375,
+									"height": 13,
+									"alpha": -0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGSzK6w0zXG7Qw="
+									},
+									"text": "Store API Data in Database"
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGSzK6LNzW2e9A="
+							},
+							"tail": {
+								"$ref": "AAAAAAGSzK3mRzWoQcw="
+							},
+							"lineStyle": 2,
+							"points": "1658:40;1658:272",
+							"nameLabel": {
+								"$ref": "AAAAAAGSzK6w0zXHdlQ="
+							},
+							"tailNameLabel": {
+								"$ref": "AAAAAAGSzK6w1DXIw7Y="
+							},
+							"headNameLabel": {
+								"$ref": "AAAAAAGSzK6w1DXJnug="
+							}
+						},
+						{
+							"_type": "ERDEntityView",
+							"_id": "AAAAAAGSzK+nEjXe2Do=",
+							"_parent": {
+								"$ref": "AAAAAAGSneYwjChUO6A="
+							},
+							"model": {
+								"$ref": "AAAAAAGSzK+nETXcYtU="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAGSzK+nEjXfgHA=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK+nEjXe2Do="
+									},
+									"font": "Arial;13;1",
+									"left": 1392,
+									"top": 69,
+									"width": 53.341796875,
+									"height": 13,
+									"text": "alert"
+								},
+								{
+									"_type": "ERDColumnCompartmentView",
+									"_id": "AAAAAAGSzK+nEjXgx00=",
+									"_parent": {
+										"$ref": "AAAAAAGSzK+nEjXe2Do="
+									},
+									"model": {
+										"$ref": "AAAAAAGSzK+nETXcYtU="
+									},
+									"font": "Arial;13;0",
+									"left": 1392,
+									"top": 87,
+									"width": 53.341796875,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"left": 1392,
+							"top": 64,
+							"width": 53.341796875,
+							"height": 33,
+							"nameLabel": {
+								"$ref": "AAAAAAGSzK+nEjXfgHA="
+							},
+							"columnCompartment": {
+								"$ref": "AAAAAAGSzK+nEjXgx00="
+							}
 						}
 					]
 				},
@@ -1725,16 +1946,6 @@
 								"$ref": "AAAAAAGSnetOuihml10="
 							},
 							"name": "lastMaintainedDate",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAGSniej2ysNxw8=",
-							"_parent": {
-								"$ref": "AAAAAAGSnetOuihml10="
-							},
-							"name": "operationalData",
-							"type": "array",
 							"length": 0
 						}
 					]
@@ -2089,6 +2300,60 @@
 						"$ref": "AAAAAAGSneYwiyhT6xg="
 					},
 					"name": "hospitalsApprovals"
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAGSzK3mRzWmnOo=",
+					"_parent": {
+						"$ref": "AAAAAAGSneYwiyhT6xg="
+					},
+					"name": "IoT API",
+					"ownedElements": [
+						{
+							"_type": "ERDRelationship",
+							"_id": "AAAAAAGSzK6w0zXCias=",
+							"_parent": {
+								"$ref": "AAAAAAGSzK3mRzWmnOo="
+							},
+							"end1": {
+								"_type": "ERDRelationshipEnd",
+								"_id": "AAAAAAGSzK6w0zXDjio=",
+								"_parent": {
+									"$ref": "AAAAAAGSzK6w0zXCias="
+								},
+								"reference": {
+									"$ref": "AAAAAAGSzK3mRzWmnOo="
+								}
+							},
+							"end2": {
+								"_type": "ERDRelationshipEnd",
+								"_id": "AAAAAAGSzK6w0zXEyAg=",
+								"_parent": {
+									"$ref": "AAAAAAGSzK6w0zXCias="
+								},
+								"name": "Store API Data in Database",
+								"reference": {
+									"$ref": "AAAAAAGSzK6LNjW0RIM="
+								}
+							}
+						}
+					]
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAGSzK6LNjW0RIM=",
+					"_parent": {
+						"$ref": "AAAAAAGSneYwiyhT6xg="
+					},
+					"name": "Database"
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAGSzK+nETXcYtU=",
+					"_parent": {
+						"$ref": "AAAAAAGSneYwiyhT6xg="
+					},
+					"name": "alert"
 				}
 			]
 		},
@@ -2151,9 +2416,9 @@
 												"$ref": "AAAAAAGSoI/SwerrqtA="
 											},
 											"font": "Arial;13;0",
-											"left": 24.72998046875,
+											"left": 22.55908203125,
 											"top": 5,
-											"width": 206.21337890625,
+											"width": 185.48193359375,
 											"height": 13,
 											"text": "Computer Operator Sequence Flow"
 										},
@@ -2166,7 +2431,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 5,
-											"width": 14.72998046875,
+											"width": 12.55908203125,
 											"height": 13,
 											"text": "sd"
 										}

@@ -5,11 +5,17 @@ import * as hospitalController from "../controllers/hospitalController.js";
 import * as equipmentController from "../controllers/equipmentController.js";
 
 const router = express.Router();
+
+// IOT API Sends data to this route, so it shouldn't be protect for user POV
+// {{URL}}api/v1/equipments/iot-data/:udiNumber
+
+// Dummy API send data to this location i.e iot-data
+router.route("/iot-data/:udiNumber").post(equipmentController.processIotData);
+
+// Protected routes
 router.use(authController.protect);
-router
-  .route("/:hospitalId")
-  .get(equipmentController.getAllEquipments)
-  .post(equipmentController.createEquipment);
+router.route("/:hospitalId").get(equipmentController.getAllEquipments);
+// .post(equipmentController.createEquipment);
 
 router
   .route("/:hospitalId/:equipmentId")

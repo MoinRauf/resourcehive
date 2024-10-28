@@ -12,29 +12,46 @@ const equipmentSchema = new mongoose.Schema({
   },
   type: {
     type: String,
+    // required: true,
+  },
+  // "type": "MRI",
+  manufacturer: {
+    type: String,
     required: true,
+    // "Siemens",
   },
   model: {
     type: String,
-    required: true,
+    // required: true,
+    // "model": "Magnetom Sola",
   },
   serialNumber: {
     type: String,
-    required: true,
+    // required: true,
+    // unique: true,
+  },
+  // UniqueDeviceIdentifiers (UDI)
+  udiNumber: {
+    type: String,
     unique: true,
+  },
+  // "location": "Radiology Department",
+  location: {
+    type: String,
   },
   status: {
     type: String,
-    // required: true,
+    required: true,
+    // "status": "active", under-maintenance,
   },
   lastMaintainedDate: {
     type: Date,
     // required: true,
   },
-  operationalData: {
-    type: Array,
-    default: [],
-  }, // Store relevant operational data
+  // operationalData: {
+  //   type: Array,
+  //   default: [],
+  // }, // Store relevant operational data
 });
 
 const Equipment = mongoose.model("Equipments", equipmentSchema);

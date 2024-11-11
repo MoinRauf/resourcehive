@@ -13,6 +13,7 @@
     "frontend": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.28.0",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {

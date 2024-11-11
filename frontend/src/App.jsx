@@ -1,8 +1,10 @@
+import { cn } from "@/utils";
+
 function App() {
   return (
     <>
       <div data-theme="light" className="min-h-screen w-screen">
-        <button class="btn">Primary</button>
+        <button className={cn("btn btn-active btn-primary")}>Primary</button>
       </div>
     </>
   );

@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "frontend": "file:",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",

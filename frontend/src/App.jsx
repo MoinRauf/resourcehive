@@ -8,16 +8,18 @@ import {
 } from "@/pages";
 import { AuthLayout, ProtectedLayout } from "@/layout";
 import AuthProvider from "@/context/authContext";
+import { Navigate } from "react-router-dom";
 
 function App() {
   return (
     <>
       <AuthProvider>
         <Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
           <Route element={<AuthLayout />}>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/sign_up" element={<SignUpPage />} />
           </Route>
 
           <Route element={<ProtectedLayout />}>

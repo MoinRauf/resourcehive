@@ -14,7 +14,7 @@ export default function AuthLayout() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/sign_up">Sign Up</Link>
       </nav>
       <Outlet />
     </div>

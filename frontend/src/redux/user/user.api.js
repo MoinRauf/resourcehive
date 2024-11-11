@@ -4,6 +4,7 @@ export function getUser(user) {
   // test code  here we will run async code then will dispatch to the store
   return (dispatch) => {
     setTimeout(() => {
+      //temp for commit test
       dispatch(setUser(user));
     }, 1000);
   };

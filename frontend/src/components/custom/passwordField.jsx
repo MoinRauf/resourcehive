@@ -26,7 +26,8 @@ const PasswordField = forwardRef(
               placeholder={placeholder}
               className={cn(
                 "block w-full rounded-md border border-slate-300 bg-white py-1.5 px-3 pr-8 text-sm/6 text-slate-900",
-                "focus:outline-none focus:ring-2 focus:ring-slate-600"
+                "focus:outline-none focus:ring-2 focus:ring-slate-600",
+                { "focus:ring-red-600 border-red-600": error }
               )}
             />
 
@@ -42,7 +43,7 @@ const PasswordField = forwardRef(
             </div>
           </div>
         </Field>
-        <div className=" min-h-4 flex items-center">
+        <div className=" min-h-4 flex items-center mt-1">
           {error && <p className="text-xs text-red-500">{error}</p>}
         </div>
       </div>

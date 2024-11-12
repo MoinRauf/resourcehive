@@ -2,11 +2,21 @@ import { useState } from "react";
 import { TextField, PasswordField, Button } from "@/components";
 import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    email: yup.string().required("Email is required"),
+    password: yup.string().required("Password is required"),
+  })
+  .required();
 
 export default function LoginForm() {
   const [disabled, setDisabled] = useState(false);
   const { control, handleSubmit, setFocus } = useForm({
     disabled,
+    resolver: yupResolver(schema),
     defaultValues: {
       email: "",
       password: "",
@@ -14,12 +24,7 @@ export default function LoginForm() {
   });
 
   function onSubmit(data) {
-    setDisabled(true);
-
-    setTimeout(() => {
-      setDisabled(false);
-      console.log("🚀 ~ onSubmit ~ data:", data);
-    }, 4000);
+    console.log("🚀 ~ onSubmit ~ data:", data);
   }
 
   function handleKeyDown(e, fieldName) {
@@ -39,8 +44,9 @@ export default function LoginForm() {
         <Controller
           control={control}
           name="email"
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <TextField
+              error={fieldState.error?.message}
               ref={field.ref}
               value={field.value}
               onBlur={field.onBlur}
@@ -55,8 +61,9 @@ export default function LoginForm() {
         <Controller
           control={control}
           name="password"
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <PasswordField
+              error={fieldState.error?.message}
               ref={field.ref}
               value={field.value}
               onBlur={field.onBlur}

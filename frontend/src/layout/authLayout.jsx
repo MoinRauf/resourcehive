@@ -1,6 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "@/hooks";
-import { Link } from "react-router-dom";
 
 export default function AuthLayout() {
   const { user } = useAuth();
@@ -11,11 +10,6 @@ export default function AuthLayout() {
 
   return (
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/sign_up">Sign Up</Link>
-      </nav>
       <Outlet />
     </div>
   );

@@ -1,3 +1,9 @@
+import { LoginForm } from "@/components";
+
 export default function LoginPage() {
-  return <h1 className="text-3xl">LoginPage</h1>;
+  return (
+    <div className="w-screen h-screen flex items-center justify-center">
+      <LoginForm />
+    </div>
+  );
 }

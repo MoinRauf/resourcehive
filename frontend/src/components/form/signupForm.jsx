@@ -7,7 +7,10 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    email: yup.string().required("Email is required"),
+    email: yup
+      .string()
+      .email("Enter valid email")
+      .required("Email is required"),
     name: yup.string().required("Name is required"),
     password: yup.string().required("Password is required"),
     confirmPassword: yup

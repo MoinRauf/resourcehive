@@ -20,7 +20,7 @@ const TextField = forwardRef(
             placeholder={placeholder}
             className={cn(
               "mt-2 block w-full rounded-md border border-slate-300 bg-white py-1.5 px-3 text-sm/6 text-slate-900",
-              " data-[focus]:outline-2 data-[focus]:-outline-offset-2   focus:outline-none focus:ring-2 focus:ring-slate-600  ",
+              " data-[focus]:outline-2 data-[focus]:-outline-offset-2   focus:outline-none focus:ring-1 focus:ring-slate-600  ",
               { "focus:ring-red-600 border-red-600": error }
             )}
           />

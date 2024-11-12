@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { TextField, PasswordField, Button } from "@/components";
+import { Button, FormControl } from "@/components";
 import { Link } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -41,38 +41,21 @@ export default function LoginForm() {
     <div className=" lg:w-1/4 py-4 xl:w-1/4 md:w-1/2 sm:w-1/2 px-4 w-full sm:shadow-[7px_-4px_60px_5px_rgba(72,_66,_66,_0.1)]">
       <h1 className="text-2xl font-bold text-center">Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          control={control}
+        <FormControl
           name="email"
-          render={({ field, fieldState }) => (
-            <TextField
-              error={fieldState.error?.message}
-              ref={field.ref}
-              value={field.value}
-              onBlur={field.onBlur}
-              onChange={field.onChange}
-              label="Email"
-              placeholder="Enter your email"
-              onKeyDown={(e) => handleKeyDown(e, "password")}
-            />
-          )}
-        />
-
-        <Controller
           control={control}
+          fieldType="text"
+          placeholder="Enter your email"
+          label="Email"
+          onKeyDown={(e) => handleKeyDown(e, "password")}
+        />
+        <FormControl
           name="password"
-          render={({ field, fieldState }) => (
-            <PasswordField
-              error={fieldState.error?.message}
-              ref={field.ref}
-              value={field.value}
-              onBlur={field.onBlur}
-              onChange={field.onChange}
-              label="Password"
-              placeholder="Enter your password"
-              onKeyDown={(e) => handleKeyDown(e, "submit")}
-            />
-          )}
+          control={control}
+          fieldType="password"
+          placeholder="Enter your password"
+          label="Password"
+          onKeyDown={(e) => handleKeyDown(e, "submit")}
         />
 
         <div>

@@ -1,3 +1,9 @@
+import { SignUpForm } from "@/components";
+
 export default function SignUpPage() {
-  return <h1 className="text-3xl">SignUp Page</h1>;
+  return (
+    <div className="w-screen min-h-screen flex  items-center  border-4  justify-center ">
+      <SignUpForm />
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ const schema = yup
   .required();
 
 export default function LoginForm() {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled] = useState(false);
   const { control, handleSubmit, setFocus } = useForm({
     disabled,
     resolver: yupResolver(schema),

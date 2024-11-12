@@ -32,7 +32,7 @@ const PasswordField = forwardRef(
             />
 
             {/* Eye Icon */}
-            <div className="absolute top-0 right-2 border border-red translate-y-[50%] flex items-center text-slate-500 hover:text-slate-700 focus:outline-none">
+            <div className="absolute top-0 right-2  translate-y-[50%] flex items-center text-slate-500 hover:text-slate-700 focus:outline-none">
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}

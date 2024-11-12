@@ -92,8 +92,8 @@ export default function LoginForm() {
           />
         </div>
         <div className="flex flex-col">
-          <Link className="text-xs underline self-center mt-2" to="/sign_up">
-            Create an account
+          <Link className="text-xs underline self-center mt-2" to="/login">
+            Login instead
           </Link>
         </div>
       </form>

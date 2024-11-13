@@ -17,10 +17,9 @@ const schema = yup
   .required();
 
 export default function LoginForm() {
-  const { login } = useAuth();
-  const [disabled] = useState(false);
+  const { login, authLoading } = useAuth();
   const { control, handleSubmit, setFocus } = useForm({
-    disabled,
+    disabled: authLoading,
     resolver: yupResolver(schema),
     defaultValues: {
       email: "",
@@ -65,7 +64,7 @@ export default function LoginForm() {
 
         <div>
           <Button
-            disabled={disabled}
+            disabled={authLoading}
             buttonText={"Login"}
             buttonType={"submit"}
             className="mt-3 bg-black  text-sm  w-full "

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useAuth } from "@/hooks";
 
 const schema = yup
   .object({
@@ -16,6 +17,7 @@ const schema = yup
   .required();
 
 export default function LoginForm() {
+  const { login } = useAuth();
   const [disabled] = useState(false);
   const { control, handleSubmit, setFocus } = useForm({
     disabled,
@@ -27,7 +29,7 @@ export default function LoginForm() {
   });
 
   function onSubmit(data) {
-    console.log("🚀 ~ onSubmit ~ data:", data);
+    login(data);
   }
 
   function handleKeyDown(e, fieldName) {

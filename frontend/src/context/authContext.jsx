@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useLocalStorage } from "@/hooks";
 import { AuthService } from "@/services/auth.service";
 import { axiosErrorHandler } from "@/config/errorHandler";
+import { showToast } from "@/utils";
+
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
@@ -29,7 +31,7 @@ export default function AuthProvider({ children }) {
     } catch (error) {
       const { error: ApiError } = axiosErrorHandler(error);
       if (ApiError?.message) {
-        alert(ApiError?.message);
+        showToast("error", ApiError?.message);
       }
     } finally {
       setAuthLoading(false);
@@ -43,13 +45,16 @@ export default function AuthProvider({ children }) {
       const response = await AuthService.signup(data);
       if (response.status === "success") {
         navigate("/login");
-        alert("Account created successfully please login to continue");
+        showToast(
+          "success",
+          "User created successfully please login to continue"
+        );
       }
     } catch (error) {
       const { error: ApiError } = axiosErrorHandler(error);
 
       if (ApiError?.message) {
-        alert(ApiError?.message);
+        showToast("error", ApiError?.message);
       }
     } finally {
       setAuthLoading(false);

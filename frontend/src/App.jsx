@@ -9,6 +9,7 @@ import {
 import { AuthLayout, ProtectedLayout } from "@/layout";
 import AuthProvider from "@/context/authContext";
 import { Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
           </Route>
         </Routes>
+        <ToastContainer />
       </AuthProvider>
     </>
   );

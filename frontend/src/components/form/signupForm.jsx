@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { Button, FormControl } from "@/components";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useAuth } from "@/hooks";
 
 const schema = yup
   .object({
@@ -13,30 +13,28 @@ const schema = yup
       .required("Email is required"),
     name: yup.string().required("Name is required"),
     password: yup.string().required("Password is required"),
-    confirmPassword: yup
+    passwordConfirm: yup
       .string()
       .required("Confirm Password is required")
       .oneOf([yup.ref("password"), null], "Passwords must match"),
   })
   .required();
 
-export default function LoginForm() {
-  const [disabled, setDisabled] = useState(false);
+export default function SignUpForm() {
+  const { authLoading, signup } = useAuth();
   const { control, handleSubmit, setFocus } = useForm({
-    disabled,
+    disabled: authLoading,
     resolver: yupResolver(schema),
     defaultValues: {
       email: "",
       password: "",
       name: "",
-      confirmPassword: "",
+      passwordConfirm: "",
     },
   });
 
   function onSubmit(data) {
-    setDisabled(true);
-    console.log("🚀 ~ onSubmit ~ data:", data);
-    setDisabled(false);
+    signup(data);
   }
 
   function handleKeyDown(e, fieldName) {
@@ -78,7 +76,7 @@ export default function LoginForm() {
           onKeyDown={(e) => handleKeyDown(e, "confirmPassword")}
         />
         <FormControl
-          name="confirmPassword"
+          name="passwordConfirm"
           control={control}
           fieldType="password"
           placeholder="Confirm your password"
@@ -88,7 +86,7 @@ export default function LoginForm() {
 
         <div>
           <Button
-            disabled={disabled}
+            disabled={authLoading}
             buttonText={"Create an account"}
             buttonType={"submit"}
             className="mt-3 bg-black  text-sm  w-full "

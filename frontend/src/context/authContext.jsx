@@ -16,44 +16,46 @@ export default function AuthProvider({ children }) {
   const login = async (data) => {
     const redirectParam = searchParams.get("redirect_to");
     const navigationPath = redirectParam ?? "/dashboard";
-    const dummyUser = {
-      userName: "john doe",
-      email: data.email,
-    };
-    const dummyToken = "jdskfjskljfklsdjfkljsdfsd";
+
     setAuthLoading(true);
 
-    setTimeout(() => {
-      setUser(dummyUser);
-      setToken(dummyToken);
-      // navigate("/dashboard");
+    try {
+      const response = await AuthService.login(data);
+      if (response.status === "success") {
+        setUser(response?.data?.user);
+        setToken(response?.token);
+        navigate(navigationPath, { replace: true });
+      }
+    } catch (error) {
+      const { error: ApiError } = axiosErrorHandler(error);
+      if (ApiError?.message) {
+        alert(ApiError?.message);
+      }
+    } finally {
       setAuthLoading(false);
-      navigate(navigationPath);
-    }, 3000);
-    // try {
-    //   const response = await AuthService.login(data);
-    //   console.log("🚀 ~ login ~ response:", response);
-    //   if (response) {
-    //     console.log("🚀 ~ login ~ response:", response);
-    //   }
-    // } catch (error) {
-    //   const { error: ApiError } = axiosErrorHandler(error);
-    //   console.log("🚀 ~ login ~ ApiError:", ApiError);
-    // }
+    }
     // navigate("/dashboard");
   };
 
   const signup = async (data) => {
+    setAuthLoading(true);
     try {
       const response = await AuthService.signup(data);
-      if (response) {
-        console.log("🚀 ~ signup ~ response:", response);
+      if (response.status === "success") {
+        navigate("/login");
+        alert("Account created successfully please login to continue");
       }
     } catch (error) {
       const { error: ApiError } = axiosErrorHandler(error);
+
+      if (ApiError?.message) {
+        alert(ApiError?.message);
+      }
+    } finally {
+      setAuthLoading(false);
     }
-    //  setUser(data);
-    navigate("/login");
+
+    // navigate("/login");
   };
 
   // call this function to sign out logged in user

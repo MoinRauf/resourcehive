@@ -1,5 +1,6 @@
 import { Link, Navigate, useOutlet } from "react-router-dom";
 import { useAuth } from "@/hooks";
+import { SideBar } from "@/components";
 
 export default function ProtectedLayout() {
   const { user } = useAuth();
@@ -14,11 +15,11 @@ export default function ProtectedLayout() {
   }
 
   return (
-    <div>
-      <nav>
-        <Link to="/profile">Profile</Link>
-      </nav>
-      {outlet}
+    <div className="flex h-screen w-screen max-md:min-h-screen gap-2 relative">
+      <section>
+        <SideBar />
+      </section>
+      <section className=" h-full overflow-auto flex-1  ">{outlet}</section>
     </div>
   );
 }

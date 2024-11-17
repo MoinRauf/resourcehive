@@ -1,3 +1,6 @@
+import { useSidebar } from "@/hooks";
+
 export default function ProfilePage() {
-  return <h1 className="text-3xl">Profile Page</h1>;
+  const { toggleSidebarOpen } = useSidebar();
+  return <button onClick={toggleSidebarOpen}>open sidebar</button>;
 }

@@ -1,11 +1,11 @@
 import { cn } from "@/utils";
 
-export default function Header({ isToggled }) {
+export default function Header({ isCollapsed }) {
   return (
     <div className="flex  flex-col justify-center items-center">
       <div
         className={cn("mb-3 mt-3  transition-all   max-md:block ", {
-          hidden: isToggled,
+          hidden: isCollapsed,
         })}
       >
         <h1 className="text-center font-bold"> RESOURCE HIVE</h1>
@@ -14,7 +14,7 @@ export default function Header({ isToggled }) {
       <div className="flex flex-col items-center justify-center">
         <div
           className={cn("w-20 rounded-full overflow-hidden max-md:w-20  ", {
-            "w-11 mt-2": isToggled,
+            "w-11 mt-2": isCollapsed,
           })}
         >
           <img
@@ -22,7 +22,7 @@ export default function Header({ isToggled }) {
             alt="avatar image"
           />
         </div>
-        <div className={cn("max-md:block", { hidden: isToggled })}>
+        <div className={cn("max-md:block", { hidden: isCollapsed })}>
           <h2 className="text-center font-bold">Izma Shafqat</h2>
         </div>
       </div>

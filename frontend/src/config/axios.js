@@ -10,7 +10,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     console.log("🚀 API ===>:", config.url);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token")?.replace(/"/g, "").trim();
+
     const isInternetReachable = navigator.onLine;
     if (isInternetReachable === false) {
       config.signal = controller.signal;

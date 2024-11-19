@@ -23,6 +23,7 @@ export default function AuthProvider({ children }) {
 
     try {
       const response = await AuthService.login(data);
+
       if (response.status === "success") {
         setUser(response?.data?.user);
         setToken(response?.token);

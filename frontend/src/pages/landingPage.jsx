@@ -3,8 +3,8 @@ export default function LandingPage() {
   return (
     <>
       <div className="flex gap-4">
-        <Link to="/login">Log-in</Link>
-        <Link to="/sign_up">Sign-up</Link>
+        <Link to="/login">Log-In</Link>
+        <Link to="/sign_up">Sign-Up</Link>
       </div>
     </>
   );

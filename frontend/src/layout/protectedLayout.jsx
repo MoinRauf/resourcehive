@@ -15,11 +15,11 @@ export default function ProtectedLayout() {
   }
 
   return (
-    <div className="flex h-screen w-screen max-md:min-h-screen gap-2 relative">
+    <div className="flex h-screen w-screen max-md:min-h-screen  relative">
       <section>
         <SideBar />
       </section>
-      <section className=" h-full overflow-auto flex-1  ">{outlet}</section>
+      <section className=" h-full overflow-auto flex-1   ">{outlet}</section>
     </div>
   );
 }

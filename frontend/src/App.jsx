@@ -5,6 +5,10 @@ import {
   DashboardPage,
   ProfilePage,
   SignUpPage,
+  RegisterHospitalPage,
+  EquipmentPage,
+  MaintenancePage,
+  SettingsPage,
 } from "@/pages";
 import { AuthLayout, ProtectedLayout } from "@/layout";
 import AuthProvider from "@/context/authContext";
@@ -28,6 +32,13 @@ function App() {
             <Route element={<ProtectedLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="profile" element={<ProfilePage />} />
+              <Route
+                path="register_hospital"
+                element={<RegisterHospitalPage />}
+              />
+              <Route path="equipments" element={<EquipmentPage />} />
+              <Route path="maintenance" element={<MaintenancePage />} />
+              <Route path="settings" element={<SettingsPage />} />
             </Route>
           </Routes>
           <ToastContainer />

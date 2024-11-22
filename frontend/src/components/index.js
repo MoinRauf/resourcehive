@@ -8,3 +8,7 @@ export { default as SideBar } from "@/components/custom/sidebar/sidebar";
 export { default as PageHeader } from "@/components/custom/pageHeader";
 export { default as Hamburger } from "@/components/custom/hamburger";
 export { default as RoundedButton } from "@/components/custom/roundedButton";
+export { default as Modal } from "@/components/custom/modal";
+export { default as RegisterHospitalForm } from "@/components/form/registerHosipitalForm";
+export { default as EquipmentForm } from "@/components/form/addEquipmentForm";
+export { default as SelectField } from "@/components/custom/selectField";

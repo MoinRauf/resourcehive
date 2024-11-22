@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { TextField, PasswordField } from "@/components";
+import { TextField, PasswordField, SelectField } from "@/components";
 function FormField({
   field,
   fieldState,
@@ -7,6 +7,7 @@ function FormField({
   placeholder,
   label,
   onKeyDown,
+  options,
 }) {
   switch (fieldType) {
     case "text":
@@ -41,6 +42,23 @@ function FormField({
           }}
         />
       );
+    case "select":
+      return (
+        <SelectField
+          error={fieldState.error?.message}
+          ref={field.ref}
+          value={field.value}
+          onBlur={field.onBlur}
+          onChange={field.onChange}
+          label={label}
+          placeholder={placeholder}
+          onKeyDown={(e) => {
+            if (!onKeyDown) return;
+            onKeyDown(e);
+          }}
+          options={options}
+        />
+      );
     default:
       return <></>;
   }
@@ -53,6 +71,7 @@ export default function FormControl({
   placeholder,
   label,
   onKeyDown,
+  options,
 }) {
   return (
     <Controller
@@ -60,6 +79,7 @@ export default function FormControl({
       control={control}
       render={(props) => (
         <FormField
+          options={options}
           onKeyDown={onKeyDown}
           placeholder={placeholder}
           label={label}

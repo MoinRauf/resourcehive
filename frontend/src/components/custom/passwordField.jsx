@@ -9,7 +9,7 @@ const PasswordField = forwardRef(
     const togglePasswordIcon = showPassword ? <FaRegEye /> : <FaRegEyeSlash />;
 
     return (
-      <div className="w-full max-w-md ">
+      <div className="w-full ">
         <Field className={cn("flex flex-col")}>
           <Label className="text-sm/6 font-semibold text-slate-900">
             {label}

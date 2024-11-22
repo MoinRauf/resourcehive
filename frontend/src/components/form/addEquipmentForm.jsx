@@ -11,7 +11,7 @@ export default function AddEquipmentForm() {
       manufacturer: "",
       udiNumber: "",
       location: "",
-      lastMaintainedDate: "",
+      lastMaintainedDate: new Date(),
       status: "",
     },
   });
@@ -33,72 +33,98 @@ export default function AddEquipmentForm() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl
-          name="type"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Equipment Type  "
-          label="Equipment Type"
-          onKeyDown={(e) => handleKeyDown(e, "modal")}
-        />
-        <FormControl
-          name="modal"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Equipment Modal"
-          label="Equipment Modal"
-          onKeyDown={(e) => handleKeyDown(e, "serialNumber")}
-        />
-        <FormControl
-          name="serialNumber"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Serial Number"
-          label="Serial Number"
-          onKeyDown={(e) => handleKeyDown(e, "manufacturer")}
-        />
-        <FormControl
-          name="manufacturer"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Equipment Manufacturer"
-          label="Equipment Manufacturer "
-          onKeyDown={(e) => handleKeyDown(e, "udiNumber")}
-        />
-        <FormControl
-          name="udiNumber"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Udi Number"
-          label="Udi Number"
-          onKeyDown={(e) => handleKeyDown(e, "location")}
-        />
-        <FormControl
-          name="location"
-          control={control}
-          fieldType="text"
-          placeholder="Enter Location"
-          label="Location"
-          onKeyDown={(e) => handleKeyDown(e, "status")}
-        />
-        <FormControl
-          name="status"
-          control={control}
-          fieldType="select"
-          placeholder="Select Status"
-          label="Status"
-          options={[
-            { id: 0, label: "Active", value: "Active" },
-            { id: 1, label: "Inactive", value: "Inactive" },
-          ]}
-        />
-        <FormControl
-          name="lastMaintainedDate"
-          control={control}
-          fieldType="date-picker"
-          placeholder="Select Date"
-          label="Last Maintained Date"
-        />
+        <div className="grid  grid-cols-1 md:grid-cols-2   md:gap-2">
+          <div className="">
+            <FormControl
+              name="type"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Equipment Type  "
+              label="Equipment Type"
+              onKeyDown={(e) => handleKeyDown(e, "modal")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="modal"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Equipment Modal"
+              label="Equipment Modal"
+              onKeyDown={(e) => handleKeyDown(e, "serialNumber")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="serialNumber"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Serial Number"
+              label="Serial Number"
+              onKeyDown={(e) => handleKeyDown(e, "manufacturer")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="manufacturer"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Equipment Manufacturer"
+              label="Equipment Manufacturer "
+              onKeyDown={(e) => handleKeyDown(e, "udiNumber")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="udiNumber"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Udi Number"
+              label="Udi Number"
+              onKeyDown={(e) => handleKeyDown(e, "location")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="location"
+              control={control}
+              fieldType="text"
+              placeholder="Enter Location"
+              label="Location"
+              onKeyDown={(e) => handleKeyDown(e, "lastMaintainedDate")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="lastMaintainedDate"
+              control={control}
+              fieldType="date-picker"
+              placeholder="Select Date"
+              label="Last Maintained Date"
+              onKeyDown={(e) => handleKeyDown(e, "status")}
+            />
+          </div>
+
+          <div>
+            <FormControl
+              name="status"
+              control={control}
+              fieldType="select"
+              placeholder="Select Status"
+              label="Status"
+              options={[
+                { id: 0, label: "Active", value: "Active" },
+                { id: 1, label: "Inactive", value: "Inactive" },
+              ]}
+            />
+          </div>
+        </div>
 
         <div>
           <Button

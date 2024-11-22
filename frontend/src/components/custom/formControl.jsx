@@ -66,7 +66,18 @@ function FormField({
       );
     case "date-picker":
       return (
-        <DatePickerField label={label} error={fieldState.error?.message} />
+        <DatePickerField
+          ref={field.ref}
+          value={field.value}
+          label={label}
+          error={fieldState.error?.message}
+          onBlur={field.onBlur}
+          onChange={field.onChange}
+          onKeyDown={(e) => {
+            if (!onKeyDown) return;
+            onKeyDown(e);
+          }}
+        />
       );
     default:
       return <></>;

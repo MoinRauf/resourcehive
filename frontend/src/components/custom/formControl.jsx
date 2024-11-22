@@ -1,5 +1,10 @@
 import { Controller } from "react-hook-form";
-import { TextField, PasswordField, SelectField } from "@/components";
+import {
+  TextField,
+  PasswordField,
+  SelectField,
+  DatePickerField,
+} from "@/components";
 function FormField({
   field,
   fieldState,
@@ -58,6 +63,10 @@ function FormField({
           }}
           options={options}
         />
+      );
+    case "date-picker":
+      return (
+        <DatePickerField label={label} error={fieldState.error?.message} />
       );
     default:
       return <></>;

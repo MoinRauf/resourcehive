@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Field, Input, Label, Select } from "@headlessui/react";
+import { Field, Label, Select } from "@headlessui/react";
 import { cn } from "@/utils";
 import { FaChevronDown } from "react-icons/fa";
 
@@ -29,7 +29,9 @@ const SelectField = forwardRef(
               onKeyDown={onKeyDown}
             >
               {options?.map((option) => (
-                <option value={option.value}>{option.label}</option>
+                <option key={option.id} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </Select>
             <FaChevronDown

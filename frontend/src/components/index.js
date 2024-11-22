@@ -12,3 +12,4 @@ export { default as Modal } from "@/components/custom/modal";
 export { default as RegisterHospitalForm } from "@/components/form/registerHosipitalForm";
 export { default as EquipmentForm } from "@/components/form/addEquipmentForm";
 export { default as SelectField } from "@/components/custom/selectField";
+export { default as DatePickerField } from "@/components/custom/datepickerField";

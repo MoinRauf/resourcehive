@@ -88,9 +88,16 @@ export default function AddEquipmentForm() {
           placeholder="Select Status"
           label="Status"
           options={[
-            { label: "Active", value: "Active" },
-            { label: "Inactive", value: "Inactive" },
+            { id: 0, label: "Active", value: "Active" },
+            { id: 1, label: "Inactive", value: "Inactive" },
           ]}
+        />
+        <FormControl
+          name="lastMaintainedDate"
+          control={control}
+          fieldType="date-picker"
+          placeholder="Select Date"
+          label="Last Maintained Date"
         />
 
         <div>

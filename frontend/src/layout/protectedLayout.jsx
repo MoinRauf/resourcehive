@@ -19,7 +19,7 @@ export default function ProtectedLayout() {
       <section>
         <SideBar />
       </section>
-      <section className=" h-full overflow-auto flex-1   ">{outlet}</section>
+      <section className=" h-full overflow-auto flex-1    ">{outlet}</section>
     </div>
   );
 }

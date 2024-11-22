@@ -7,3 +7,4 @@ export { default as FormControl } from "@/components/custom/formControl";
 export { default as SideBar } from "@/components/custom/sidebar/sidebar";
 export { default as PageHeader } from "@/components/custom/pageHeader";
 export { default as Hamburger } from "@/components/custom/hamburger";
+export { default as RoundedButton } from "@/components/custom/roundedButton";

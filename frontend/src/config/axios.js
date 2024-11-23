@@ -2,7 +2,7 @@ import { AppConfig } from "@/constants";
 import axios from "axios";
 
 const controller = new AbortController();
-console.log("this is api ", AppConfig.BASEURL);
+
 const axiosInstance = axios.create({
   baseURL: AppConfig.BASEURL,
 });

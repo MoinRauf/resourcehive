@@ -13,3 +13,5 @@ export { default as RegisterHospitalForm } from "@/components/form/registerHosip
 export { default as EquipmentForm } from "@/components/form/addEquipmentForm";
 export { default as SelectField } from "@/components/custom/selectField";
 export { default as DatePickerField } from "@/components/custom/datepickerField";
+export { default as Table } from "@/components/custom/table";
+export { default as DebouncedInput } from "@/components/custom/debouncedInput";

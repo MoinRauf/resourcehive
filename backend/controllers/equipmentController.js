@@ -21,7 +21,7 @@ const normalRanges = {
 // In-memory data storage for recent monitoring data
 const inMemoryData = new Map();
 
-// export const createEquipment = factory.createOne(Equipment);
+export const createEquipment = factory.createOne(Equipment);
 export const getOneEquipment = factory.getOne(Equipment);
 export const getAllEquipments = factory.getAll(Equipment);
 export const deleteEquipment = factory.deleteOne(Equipment);

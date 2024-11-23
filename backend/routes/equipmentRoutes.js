@@ -14,8 +14,7 @@ router.route("/iot-data/:udiNumber").post(equipmentController.processIotData);
 
 // Protected routes
 router.use(authController.protect);
-router.route("/:hospitalId").get(equipmentController.getAllEquipments);
-// .post(equipmentController.createEquipment);
+router.route("/:hospitalId").get(equipmentController.getAllEquipments).post(equipmentController.createEquipment);
 
 router
   .route("/:hospitalId/:equipmentId")

@@ -1,23 +1,49 @@
 import { useForm } from "react-hook-form";
 import { Button, FormControl } from "..";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useClose } from "@headlessui/react";
 
-export default function AddEquipmentForm() {
+const schema = yup
+  .object({
+    type: yup.string().required("Type is required"),
+    model: yup.string().required("Modal is required"),
+
+    serialNumber: yup.string().required("Serial Number is required"),
+
+    manufacturer: yup.string().required("Manufacturer is required"),
+
+    udiNumber: yup.string().required("Udi Number is required"),
+
+    location: yup.string().required("Location is required"),
+
+    lastMaintainedDate: yup
+      .string()
+      .required("Last Maintained Date is required"),
+
+    status: yup.string().required("Status is required"),
+  })
+  .required();
+
+export default function AddEquipmentForm({ onSubmitHandler }) {
+  let close = useClose();
   const { control, handleSubmit, setFocus } = useForm({
+    resolver: yupResolver(schema),
     disabled: false,
     defaultValues: {
       type: "",
-      modal: "",
+      model: "",
       serialNumber: "",
       manufacturer: "",
       udiNumber: "",
       location: "",
       lastMaintainedDate: new Date(),
-      status: "",
+      status: "active",
     },
   });
 
   function onSubmit(data) {
-    console.log(data);
+    onSubmitHandler(data);
   }
 
   function handleKeyDown(e, fieldName) {
@@ -47,11 +73,11 @@ export default function AddEquipmentForm() {
 
           <div>
             <FormControl
-              name="modal"
+              name="model"
               control={control}
               fieldType="text"
-              placeholder="Enter Equipment Modal"
-              label="Equipment Modal"
+              placeholder="Enter Equipment Model"
+              label="Equipment Model"
               onKeyDown={(e) => handleKeyDown(e, "serialNumber")}
             />
           </div>

@@ -5,7 +5,7 @@ import {
   getPaginationRowModel,
   getFilteredRowModel,
 } from "@tanstack/react-table";
-import { filterFns } from "@/utils";
+import { cn, filterFns } from "@/utils";
 import { useState } from "react";
 import { DebouncedInput } from "..";
 
@@ -37,11 +37,13 @@ export default function Table({
       {showGlobalFilter && (
         <>
           <div className="max-w-[250px]">
-            <DebouncedInput
-              value={globalFilter ?? ""}
-              onChange={(value) => setGlobalFilter(String(value))}
-              placeholder="Search all columns..."
-            />
+            {data?.length ? (
+              <DebouncedInput
+                value={globalFilter ?? ""}
+                onChange={(value) => setGlobalFilter(String(value))}
+                placeholder="Search all columns..."
+              />
+            ) : null}
           </div>
         </>
       )}
@@ -56,11 +58,18 @@ export default function Table({
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className={`px-4 py-2 text-sm font-medium text-gray-900 ${
-                      header.column.id === "actions"
-                        ? "sticky top-0 right-0 bg-gray-100 shadow-lg z-20"
-                        : ""
-                    }`}
+                    className={cn(
+                      "px-4  py-2 text-sm font-medium text-gray-900",
+
+                      {
+                        "sticky top-0 right-0 bg-gray-100 shadow-lg z-20":
+                          header.column.id === "actions",
+                      },
+                      {
+                        "min-w-[11rem]":
+                          header.column.id === "lastMaintainedDate",
+                      }
+                    )}
                   >
                     {header.isPlaceholder
                       ? null

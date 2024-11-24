@@ -1,27 +1,28 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Modal, PageHeader, RoundedButton, Table } from "@/components";
 import { AiOutlinePlus } from "react-icons/ai";
 import AddEquipmentForm from "@/components/form/addEquipmentForm";
-import equipmentMockData from "@/mock_data/equipmentData.json";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { EquipmentsService } from "@/services/equipment.service";
+import { axiosErrorHandler } from "@/config/errorHandler";
+import { showToast } from "@/utils";
+import moment from "moment";
 
 export default function EquipmentPage() {
+  const [equipmentData, setEquipmentData] = useState([]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cols = useMemo(
     () => [
       {
-        header: "Id",
-        accessorKey: "id",
-      },
-      {
         header: "Type",
         accessorKey: "type",
       },
       {
-        header: "Modal",
-        accessorKey: "modal",
+        header: "Model",
+        accessorKey: "model",
       },
       {
         header: "Serial Number",
@@ -42,6 +43,9 @@ export default function EquipmentPage() {
       {
         header: "Last Maintained Date",
         accessorKey: "lastMaintainedDate",
+        cell: ({ row }) => {
+          return moment(row.original.lastMaintainedDate).format("l");
+        },
       },
       {
         header: "Status",
@@ -57,6 +61,9 @@ export default function EquipmentPage() {
               icon={<FaEdit className="text-white" />}
             />
             <RoundedButton
+              onClick={() =>
+                onClickDelete(row.original.hospitalId, row.original.equipmentId)
+              }
               className="p-3 bg-red-500"
               icon={<MdDelete className="text-white" />}
             />
@@ -64,8 +71,74 @@ export default function EquipmentPage() {
         ),
       },
     ],
-    []
+    [equipmentData]
   );
+
+  useEffect(() => {
+    getAllEquipmentByHospitalId("671239d2287c7fdddd71f7c8");
+  }, []);
+  function onSubmitHandler(data) {
+    createEquipmentByHospitalId("671239d2287c7fdddd71f7c8", data);
+  }
+
+  async function onClickDelete(hospitalId, equipmentId) {
+    deleteEquipment(hospitalId, equipmentId);
+  }
+  async function getAllEquipmentByHospitalId(id) {
+    try {
+      const response = await EquipmentsService.getAllEquipmentsByHospitalId(id);
+
+      if (response.status === "success") {
+        setEquipmentData(response?.data?.data);
+      }
+    } catch (error) {
+      const { error: ApiError } = axiosErrorHandler(error);
+
+      if (ApiError?.message || ApiError) {
+        showToast("error", ApiError?.message || ApiError);
+      }
+    }
+  }
+
+  async function createEquipmentByHospitalId(id, data) {
+    closeModal();
+    try {
+      const response = await EquipmentsService.createEquipmentByHospitalId(
+        id,
+        data
+      );
+      if (response.status === "success") {
+        const updatedData = [...equipmentData, response?.data?.data];
+        setEquipmentData(updatedData);
+      }
+    } catch (error) {
+      const { error: ApiError } = axiosErrorHandler(error);
+      if (ApiError?.message) {
+        showToast("error", ApiError?.message);
+      }
+    }
+  }
+
+  async function deleteEquipment(hospitalId, equipmentId) {
+    const updatedData = equipmentData.filter((item) => {
+      return item.equipmentId !== equipmentId;
+    });
+
+    setEquipmentData(updatedData);
+    showToast("success", "Equipment Deleted Successfully");
+
+    try {
+      await EquipmentsService.deleteEquipmentByHospitalIdAndEquipmentId(
+        hospitalId,
+        equipmentId
+      );
+    } catch (error) {
+      const { error: ApiError } = axiosErrorHandler(error);
+      if (ApiError?.message) {
+        showToast("error", ApiError?.message);
+      }
+    }
+  }
 
   function openModal() {
     setIsModalOpen(true);
@@ -79,7 +152,7 @@ export default function EquipmentPage() {
       <div>
         <PageHeader headerText={"Equipments"} />
         <div className="p-4">
-          <Table data={equipmentMockData} columns={cols} />
+          <Table data={equipmentData} columns={cols} />
         </div>
 
         <RoundedButton
@@ -92,7 +165,7 @@ export default function EquipmentPage() {
           onClose={closeModal}
           heading="Add Equipment"
         >
-          <AddEquipmentForm />
+          <AddEquipmentForm onSubmitHandler={onSubmitHandler} />
         </Modal>
       </div>
     </>

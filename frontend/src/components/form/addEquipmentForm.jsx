@@ -175,7 +175,7 @@ export default function AddEquipmentForm({
               !selectedEquipmentData ? "Add Equipment" : "Update Equipment"
             }
             buttonType={"submit"}
-            className="mt-3 bg-black  text-sm  w-full "
+            className="mt-3 bg-custom-gray  text-sm  w-full "
           />
         </div>
       </form>

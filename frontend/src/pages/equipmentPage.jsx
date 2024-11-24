@@ -234,10 +234,10 @@ export default function EquipmentPage() {
         </div>
 
         <RoundedButton
-          onClick={openModal}
-          className="absolute bottom-7 right-7"
-          icon={<AiOutlinePlus className="text-white text-md font-bold" />}
-        />
+  onClick={openModal}
+  className="absolute bottom-7 right-7 bg-custom-gray"
+  icon={<AiOutlinePlus className="text-black text-md font-bold" />}
+/>
         <Modal
           isOpen={isModalOpen}
           onClose={closeModal}

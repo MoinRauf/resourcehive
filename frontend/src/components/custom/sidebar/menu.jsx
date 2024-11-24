@@ -93,7 +93,7 @@ function MenuItem({ label, path, isCollapsed, toggleSidebarOpen, icon }) {
           className={cn(
             "  my-1 rounded-md h-8 p-1 flex  gap-2 items-center justify-center ",
             {
-              "bg-slate-900 text-white": isActive,
+              "bg-custom-gray text-white": isActive,
             },
             {
               "text-red-500": isLogoutMenuItem,

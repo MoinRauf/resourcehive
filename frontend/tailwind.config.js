@@ -4,6 +4,10 @@ export default {
 
   theme: {
     extend: {
+      colors: {
+        'custom-gray': '#ADBBDA',
+        'custom-purple':'#3D52A0',
+      },
       keyframes: {
         "opacity-animate": {
           "0%": { opacity: "0" },

@@ -66,7 +66,7 @@ export default function LoginForm() {
             disabled={authLoading}
             buttonText={"Login"}
             buttonType={"submit"}
-            className="mt-3 bg-black  text-sm  w-full "
+            className="mt-3 bg-custom-gray  text-sm  w-full text-black"
           />
         </div>
         <div className="flex flex-col">

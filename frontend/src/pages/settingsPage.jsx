@@ -1,7 +1,8 @@
+import { PageHeader } from "@/components";
 export default function SettingsPage() {
   return (
     <>
-      <h1>Settings Page</h1>
+      <PageHeader headerText={"Settings"} />
     </>
   );
 }

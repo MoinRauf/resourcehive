@@ -14,7 +14,7 @@ export default function RegisterHospitalPage() {
   return (
     <>
       <div>
-        <PageHeader headerText={"Hospitals"} />
+        <PageHeader headerText={"Register Hospitals"} />
         <RoundedButton
           onClick={openModal}
           className="absolute bottom-7 right-7"

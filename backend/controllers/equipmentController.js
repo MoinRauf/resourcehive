@@ -28,7 +28,6 @@ export const deleteEquipment = factory.deleteOne(Equipment);
 export const updateEquipment = catchAsync(async (req, res, next) => {
   const { hospitalId, equipmentId } = req.params;
   const criteria = { hospitalId, equipmentId };
-
   const doc = await Equipment.findOneAndUpdate(criteria, req.body, {
     new: true,
     runValidators: true,

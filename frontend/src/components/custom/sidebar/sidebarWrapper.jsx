@@ -11,7 +11,7 @@ export default function SidebarWrapper({
     <div
       onClick={toggleSidebarOpen}
       id="sidebar_wrapper "
-      className={cn("  h-full  max-md:w-0  max-md:top-0  relative   ", {
+      className={cn("  h-full  max-md:w-0  max-md:top-0  relative  z-[2] ", {
         "max-md:absolute max-md:w-full max-md:animate-opacity bg-black/45 ":
           isOpen,
       })}
@@ -22,7 +22,7 @@ export default function SidebarWrapper({
         }}
         id="sidebar_container "
         className={cn(
-          "flex flex-col  w-[12rem] h-screen transition-all bg-white shadow-[12px_-3px_25px_-14px_rgba(142,_137,_144,_0.4)] max-md:w-[12rem]  max-md:-translate-x-[100%] ",
+          "flex flex-col  w-[12rem] h-screen transition-all   bg-white  shadow-[12px_-3px_25px_-14px_rgba(142,_137,_144,_0.4)] max-md:w-[12rem]  max-md:-translate-x-[100%] ",
           { "w-[4rem]": isCollapsed },
           { "max-md:-translate-x-[0] delay-200 ": isOpen }
         )}

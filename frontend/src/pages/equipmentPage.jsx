@@ -1,5 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
-import { Modal, PageHeader, RoundedButton, Table } from "@/components";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  ConfirmationDialogue,
+  Modal,
+  PageHeader,
+  RoundedButton,
+  Table,
+} from "@/components";
 import { AiOutlinePlus } from "react-icons/ai";
 import AddEquipmentForm from "@/components/form/addEquipmentForm";
 import { FaEdit } from "react-icons/fa";
@@ -11,8 +17,17 @@ import moment from "moment";
 
 export default function EquipmentPage() {
   const [equipmentData, setEquipmentData] = useState([]);
-
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+
+  const selectedEquipmentData =
+    equipmentData?.find((item) => item.equipmentId === selectedEquipmentId) ??
+    null;
+
+  useEffect(() => {
+    getAllEquipmentByHospitalId("671239d2287c7fdddd71f7c8");
+  }, []);
 
   const cols = useMemo(
     () => [
@@ -57,13 +72,15 @@ export default function EquipmentPage() {
         cell: ({ row }) => (
           <div className="flex gap-2">
             <RoundedButton
+              onClick={() => onClickEdit(row.original.equipmentId)}
               className="p-3 bg-blue-600"
               icon={<FaEdit className="text-white" />}
             />
             <RoundedButton
-              onClick={() =>
-                onClickDelete(row.original.hospitalId, row.original.equipmentId)
-              }
+              onClick={() => {
+                openConfirmationModal();
+                setSelectedEquipmentId(row.original.equipmentId);
+              }}
               className="p-3 bg-red-500"
               icon={<MdDelete className="text-white" />}
             />
@@ -71,19 +88,19 @@ export default function EquipmentPage() {
         ),
       },
     ],
-    [equipmentData]
+    [equipmentData, selectedEquipmentId, isConfirmationModalOpen]
   );
 
-  useEffect(() => {
-    getAllEquipmentByHospitalId("671239d2287c7fdddd71f7c8");
-  }, []);
   function onSubmitHandler(data) {
-    createEquipmentByHospitalId("671239d2287c7fdddd71f7c8", data);
+    closeModal();
+
+    if (!selectedEquipmentData) {
+      createEquipmentByHospitalId("671239d2287c7fdddd71f7c8", data);
+    } else {
+      updateEquipment(data);
+    }
   }
 
-  async function onClickDelete(hospitalId, equipmentId) {
-    deleteEquipment(hospitalId, equipmentId);
-  }
   async function getAllEquipmentByHospitalId(id) {
     try {
       const response = await EquipmentsService.getAllEquipmentsByHospitalId(id);
@@ -95,7 +112,7 @@ export default function EquipmentPage() {
       const { error: ApiError } = axiosErrorHandler(error);
 
       if (ApiError?.message || ApiError) {
-        showToast("error", ApiError?.message || ApiError);
+        // showToast("error", ApiError?.message || ApiError);
       }
     }
   }
@@ -119,6 +136,26 @@ export default function EquipmentPage() {
     }
   }
 
+  async function updateEquipment(data) {
+    try {
+      const response =
+        await EquipmentsService.UpdateEquipmentByHospitalIdAndEquipmentId(data);
+
+      if (response.status === "success") {
+        showToast("success", "Equipment updated successfully");
+        const updatedEquipmentData = updateEquipmentData(
+          data.equipmentId,
+          data
+        );
+        setEquipmentData(updatedEquipmentData);
+      }
+    } catch (error) {
+      const { error: ApiError } = axiosErrorHandler(error);
+      if (ApiError?.message) {
+        showToast("error", ApiError?.message);
+      }
+    }
+  }
   async function deleteEquipment(hospitalId, equipmentId) {
     const updatedData = equipmentData.filter((item) => {
       return item.equipmentId !== equipmentId;
@@ -132,6 +169,7 @@ export default function EquipmentPage() {
         hospitalId,
         equipmentId
       );
+      setSelectedEquipmentId(null);
     } catch (error) {
       const { error: ApiError } = axiosErrorHandler(error);
       if (ApiError?.message) {
@@ -146,7 +184,47 @@ export default function EquipmentPage() {
 
   function closeModal() {
     setIsModalOpen(false);
+    setSelectedEquipmentId(null);
   }
+
+  function openConfirmationModal(cb) {
+    if (cb) {
+      cb();
+    }
+    setIsConfirmationModalOpen(true);
+  }
+
+  function closeConfirmationModal() {
+    setIsConfirmationModalOpen(false);
+    setSelectedEquipmentId(false);
+  }
+
+  async function onClickDelete(hospitalId, equipmentId) {
+    closeConfirmationModal();
+    deleteEquipment(hospitalId, equipmentId);
+  }
+
+  async function onClickEdit(equipmentId) {
+    setSelectedEquipmentId(equipmentId);
+    openModal();
+  }
+
+  const updateEquipmentData = useCallback(
+    function (equipmentId, data) {
+      const updatedData = equipmentData.map((item) => {
+        if (item.equipmentId === equipmentId) {
+          return {
+            ...item,
+            ...data,
+          };
+        }
+        return item;
+      });
+
+      return updatedData;
+    },
+    [equipmentData]
+  );
   return (
     <>
       <div>
@@ -163,9 +241,30 @@ export default function EquipmentPage() {
         <Modal
           isOpen={isModalOpen}
           onClose={closeModal}
-          heading="Add Equipment"
+          heading={
+            !selectedEquipmentData ? "Add Equipment" : "Update Equipment"
+          }
         >
-          <AddEquipmentForm onSubmitHandler={onSubmitHandler} />
+          <AddEquipmentForm
+            selectedEquipmentData={selectedEquipmentData}
+            onSubmitHandler={onSubmitHandler}
+          />
+        </Modal>
+        <Modal
+          isOpen={isConfirmationModalOpen}
+          onClose={closeConfirmationModal}
+          heading={"Confirm Delete"}
+        >
+          <ConfirmationDialogue
+            onConfirmClick={() => {
+              onClickDelete(
+                selectedEquipmentData.hospitalId,
+                selectedEquipmentData.equipmentId
+              );
+            }}
+            onCancelClick={closeConfirmationModal}
+            confirmationText="Are you sure want to delete?"
+          />
         </Modal>
       </div>
     </>

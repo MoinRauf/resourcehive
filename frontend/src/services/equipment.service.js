@@ -3,6 +3,7 @@ export const EquipmentsService = {
   getAllEquipmentsByHospitalId,
   createEquipmentByHospitalId,
   deleteEquipmentByHospitalIdAndEquipmentId,
+  UpdateEquipmentByHospitalIdAndEquipmentId,
 };
 
 async function getAllEquipmentsByHospitalId(hospitalId) {
@@ -27,6 +28,17 @@ async function deleteEquipmentByHospitalIdAndEquipmentId(
 ) {
   try {
     return axiosInstance.delete(`equipments/${hospitalId}/${equipmentId}`);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+async function UpdateEquipmentByHospitalIdAndEquipmentId(data) {
+  try {
+    return axiosInstance.patch(
+      `equipments/${data.hospitalId}/${data.equipmentId}`,
+      data
+    );
   } catch (error) {
     return Promise.reject(error);
   }

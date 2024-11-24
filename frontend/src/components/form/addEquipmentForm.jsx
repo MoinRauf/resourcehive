@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Button, FormControl } from "..";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useClose } from "@headlessui/react";
+import { useEffect } from "react";
 
 const schema = yup
   .object({
@@ -25,9 +25,11 @@ const schema = yup
   })
   .required();
 
-export default function AddEquipmentForm({ onSubmitHandler }) {
-  let close = useClose();
-  const { control, handleSubmit, setFocus } = useForm({
+export default function AddEquipmentForm({
+  onSubmitHandler,
+  selectedEquipmentData,
+}) {
+  const { control, handleSubmit, setFocus, setValue } = useForm({
     resolver: yupResolver(schema),
     disabled: false,
     defaultValues: {
@@ -56,6 +58,20 @@ export default function AddEquipmentForm({ onSubmitHandler }) {
       }
     }
   }
+
+  function setFieldValues(obj) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        setValue(key, obj[key]);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (selectedEquipmentData) {
+      setFieldValues(selectedEquipmentData);
+    }
+  }, []);
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -145,8 +161,8 @@ export default function AddEquipmentForm({ onSubmitHandler }) {
               placeholder="Select Status"
               label="Status"
               options={[
-                { id: 0, label: "Active", value: "Active" },
-                { id: 1, label: "Inactive", value: "Inactive" },
+                { id: 0, label: "Active", value: "active" },
+                { id: 1, label: "Inactive", value: "inactive" },
               ]}
             />
           </div>
@@ -155,7 +171,9 @@ export default function AddEquipmentForm({ onSubmitHandler }) {
         <div>
           <Button
             disabled={false}
-            buttonText={"Add Equipment"}
+            buttonText={
+              !selectedEquipmentData ? "Add Equipment" : "Update Equipment"
+            }
             buttonType={"submit"}
             className="mt-3 bg-black  text-sm  w-full "
           />

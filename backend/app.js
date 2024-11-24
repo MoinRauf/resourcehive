@@ -44,11 +44,7 @@ dotenv.config({ path: "./config.env" });
 // CORS configuration for production and local development
 app.use(
   cors({
-    origin: [
-      "https://resourcehive-b.vercel.app",
-      "http://localhost:5173",
-      "https://resourcehive.vercel.app",
-    ], // Allowed origins
+    origin: ["https://resourcehive-b.vercel.app", "http://localhost:5173"], // Allowed origins
     credentials: true, // Allow cookies and credentials to be included
   })
 );
@@ -57,11 +53,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: [
-      "https://resourcehive-b.vercel.app",
-      "http://localhost:5173",
-      "https://resourcehive.vercel.app",
-    ],
+    origin: ["https://resourcehive-b.vercel.app", "http://localhost:5173"],
     credentials: true,
   })
 );
@@ -70,12 +62,12 @@ app.options(
 app.use(helmet());
 
 // Limit requests from same API
-// const limiter = rateLimit({
-//   max: 100,
-//   windowMs: 60 * 60 * 1000, // 100 requests per hour
-//   message: "Too many requests from this IP, please try again in an hour!",
-// });
-// app.use("/api", limiter);
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000, // 100 requests per hour
+  message: "Too many requests from this IP, please try again in an hour!",
+});
+app.use("/api", limiter);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: "10kb" }));

@@ -8,7 +8,7 @@ export const EquipmentsService = {
 
 async function getAllEquipmentsByHospitalId(hospitalId) {
   try {
-    return axiosInstance.get(`equipments/${hospitalId}`);
+    return axiosInstance.get(`/api/v1/equipments/${hospitalId}`);
   } catch (error) {
     return Promise.reject(error);
   }
@@ -16,7 +16,7 @@ async function getAllEquipmentsByHospitalId(hospitalId) {
 
 async function createEquipmentByHospitalId(hospitalId, body) {
   try {
-    return axiosInstance.post(`equipments/${hospitalId}`, body);
+    return axiosInstance.post(`/api/v1/equipments/${hospitalId}`, body);
   } catch (error) {
     return Promise.reject(error);
   }
@@ -27,7 +27,9 @@ async function deleteEquipmentByHospitalIdAndEquipmentId(
   equipmentId
 ) {
   try {
-    return axiosInstance.delete(`equipments/${hospitalId}/${equipmentId}`);
+    return axiosInstance.delete(
+      `/api/v1/equipments/${hospitalId}/${equipmentId}`
+    );
   } catch (error) {
     return Promise.reject(error);
   }
@@ -36,7 +38,7 @@ async function deleteEquipmentByHospitalIdAndEquipmentId(
 async function UpdateEquipmentByHospitalIdAndEquipmentId(data) {
   try {
     return axiosInstance.patch(
-      `equipments/${data.hospitalId}/${data.equipmentId}`,
+      `/api/v1/equipments/${data.hospitalId}/${data.equipmentId}`,
       data
     );
   } catch (error) {

@@ -4,7 +4,7 @@ import axios from "axios";
 const controller = new AbortController();
 
 const axiosInstance = axios.create({
-  baseURL: AppConfig.BASEURL,
+    baseURL: AppConfig.VITE_REACT_APP_BACKEND_BASEURL,
 });
 //This allows you to intercept the request before it is sent and alter headers or anyting else that is passed to the axios config.
 axiosInstance.interceptors.request.use(

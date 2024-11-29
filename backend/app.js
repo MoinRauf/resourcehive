@@ -44,7 +44,7 @@ dotenv.config({ path: "./config.env" });
 // CORS configuration for production and local development
 app.use(
   cors({
-    origin: ["https://resourcehive.vercel.app"], // Allowed origins
+    origin: ["https://resourcehive.vercel.app", "http://localhost:5173"], // Allowed origins
     credentials: true, // Allow cookies and credentials to be included
   })
 );
@@ -53,7 +53,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: ["https://resourcehive.vercel.app"],
+    origin: ["https://resourcehive.vercel.app", "http://localhost:5173"],
     credentials: true,
   })
 );

@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-gray': '#ADBBDA',
-        'custom-purple':'#3D52A0',
+        "custom-gray": "orange",
+        "custom-purple": "#3D52A0",
       },
       keyframes: {
         "opacity-animate": {

@@ -64,7 +64,7 @@ export default class Email {
   }
 
   async sendWelcome() {
-    await this.send("Welcome", "Welcome to the Resource Hive!!!");
+    await this.send("welcome", "Welcome to the Resource Hive!!!");
   }
 
   async sendPasswordReset() {

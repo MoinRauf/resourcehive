@@ -19,6 +19,7 @@ const RouteComponent = () => {
      < Route path="/SignUp" element={<SignUp />} />
      < Route path="/SignIn" element={<SignIn />} />
      < Route path="/SignIn" element={<SignIn />} />
+     < Route path="/SignIn" element={<SignIn />} />
     </Routes>
   );
 };

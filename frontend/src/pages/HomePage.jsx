@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const HomePage = () => {
   const navigate = useNavigate();
 
   return (
@@ -23,4 +23,4 @@ const buttonStyle = {
   cursor: "pointer",
 };
 
-export default Home;
+export default HomePage;

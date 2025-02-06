@@ -1,23 +1,20 @@
-import { lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+// src/Route.jsx
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-// Lazy loading pages for better performance
-const Home = lazy(() => import("../pages/Home"));
-const Login = lazy(() => import("../pages/Login"));
-const Signup = lazy(() => import("../pages/Signup"));
-const Dashboard = lazy(() => import("../pages/Dashboard"));
-const NotFound = lazy(() => import("../pages/NotFound"));
+// Import Page Components
+import HomePage from "../pages/HomePage";
+import AboutPage from "../pages/AboutPage";
+import ContactPage from "../pages/ContactPage";
 
-const AppRoutes = () => {
+const RouteComponent = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
     </Routes>
   );
 };
 
-export default AppRoutes;
+export default RouteComponent;

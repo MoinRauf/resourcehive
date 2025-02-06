@@ -1,3 +1,6 @@
+/* index.css */
+
+/* Global root styles */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,28 +16,38 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links Styling */
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
+/* Body Layout and Global Styles */
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center; /* Ensure content is centered horizontally as well */
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-color); /* Use CSS variables to simplify management */
+  color: var(--text-color);
+  font-size: 16px; /* Set a base font size */
 }
 
+/* Heading styles */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0; /* Remove default margin for better spacing */
 }
 
+/* Button Styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,26 +56,41 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #fff; /* Ensure text is visible on dark buttons */
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light Mode Styles */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --bg-color: #ffffff;
+    --text-color: #213547;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
+    border-color: #dcdcdc;
+  }
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #242424;
+    --text-color: rgba(255, 255, 255, 0.87);
   }
 }

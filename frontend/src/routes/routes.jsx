@@ -6,6 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
+import SignUp from "../pages/user-signup/sign-up/SignUp";
+import SignIn from "../pages/user-signin/sign-in/SignIn";
+
 
 const RouteComponent = () => {
   return (
@@ -13,6 +16,9 @@ const RouteComponent = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
+     < Route path="/SignUp" element={<SignUp />} />
+     < Route path="/SignIn" element={<SignIn />} />
+
     </Routes>
   );
 };
